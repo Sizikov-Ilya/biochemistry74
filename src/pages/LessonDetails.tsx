@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { Box, Typography } from "@mui/material";
 import lesson1 from "../lessons/lesson1";
@@ -40,6 +40,10 @@ const lessons: Record<string, { title: string; content: string }> = {
 const LessonDetails: React.FC = () => {
   const { id } = useParams<{ id: string }>();
   const lesson = lessons[id || "1"];
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [id]);
 
   return (
     <Box
